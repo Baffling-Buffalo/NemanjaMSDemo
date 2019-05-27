@@ -1,0 +1,187 @@
+{
+  "ReRoutes": [
+    // API 1 ROUTES
+
+    {
+      "DownstreamPathTemplate": "/api1/data",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api1/data",
+      "UpstreamHttpMethod": [ "Get" ],
+      "key": "api1data"
+    },
+
+    {
+      "DownstreamPathTemplate": "/api1/userdata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api1/userdata",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": ["api1"]
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api1/admindata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api1/admindata",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api1" ]
+
+      },
+      "RouteClaimsRequirement": {
+        "role": "SuperUser"
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api1/delayeddata",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api1/delayeddata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        },
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api1/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamPathTemplate": "/api1/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api1" ]
+
+      }
+    },
+
+    // API 2 ROUTES
+    {
+      "DownstreamPathTemplate": "/api2/data",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "UpstreamPathTemplate": "/api2/data",
+      "UpstreamHttpMethod": [ "Get" ],
+      "key": "api2data"
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/api2/userdata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "UpstreamPathTemplate": "/api2/userdata",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api2" ]
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/api2/admindata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "UpstreamPathTemplate": "/api2/admindata",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api2" ]
+
+      },
+      "RouteClaimsRequirement": {
+        "role": "admin"
+      }
+    },
+
+    {
+      // FORM TEST
+      "UpstreamPathTemplate": "/form",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/viewer/?docname=SpeechToTextTest",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "172.31.10.74",
+          "Port": 8080
+        }
+      ]
+    }
+  ],
+
+  // AGGREGATIONS - from one request to gateway making many requests
+  // and handling response in aggregator class
+  // ReRouteKeys are defined up in ReRoute object and
+  // Aggregator is defined at startup
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "api1data",
+        "api2data"
+      ],
+      "UpstreamPathTemplate": "/api1and2",
+      "Aggregator": "Api1and2Aggregator"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000",
+    "RequestIdKey": "CorrelationID"
+    //"AdministrationPath": "/administration"
+  }
+}

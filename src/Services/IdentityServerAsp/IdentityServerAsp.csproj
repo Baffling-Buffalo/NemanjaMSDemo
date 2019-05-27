@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-IdentityServerAsp-0C65D60B-DA63-4F7E-905B-24BE91BE6B34</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\ConfigurationDb\**" />
+    <Compile Remove="Data\Migrations\PersistedGrantDb\**" />
+    <Compile Remove="Views1\**" />
+    <Content Remove="Data\Migrations\ConfigurationDb\**" />
+    <Content Remove="Data\Migrations\PersistedGrantDb\**" />
+    <Content Remove="Views1\**" />
+    <EmbeddedResource Remove="Data\Migrations\ConfigurationDb\**" />
+    <EmbeddedResource Remove="Data\Migrations\PersistedGrantDb\**" />
+    <EmbeddedResource Remove="Views1\**" />
+    <None Remove="Data\Migrations\ConfigurationDb\**" />
+    <None Remove="Data\Migrations\PersistedGrantDb\**" />
+    <None Remove="Views1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\IdentityServer\PersistedGrantDb\20190508091423_InitialIdentityServerPersistedGrantDbMigration1.cs" />
+    <Compile Remove="Data\Migrations\IdentityServer\PersistedGrantDb\20190508091423_InitialIdentityServerPersistedGrantDbMigration1.Designer.cs" />
+    <Compile Remove="Data\Migrations\IdentityServer\PersistedGrantDb\PersistedGrantDbContextModelSnapshot.cs" />
+    <Compile Remove="ViewModels\AccountViewModels\ExternalLoginViewModel.cs" />
+    <Compile Remove="ViewModels\AccountViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Remove="ViewModels\AccountViewModels\LoginWith2faViewModel.cs" />
+    <Compile Remove="ViewModels\AccountViewModels\LoginWithRecoveryCodeViewModel.cs" />
+    <Compile Remove="ViewModels\AccountViewModels\RegisterViewModel.cs" />
+    <Compile Remove="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\Migrations\ConfigurationDb.sql" />
+    <None Remove="Data\Migrations\PersistedGrantDb.sql" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="HeaderPropagation" Version="3.0.0" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.3.0" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="PolicyServer.Runtime.Client.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.1.3-dev-00236" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\IdentityServer\PersistedGrantDb\" />
+  </ItemGroup>
+
+</Project>

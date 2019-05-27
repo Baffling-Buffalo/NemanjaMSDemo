@@ -1,0 +1,9 @@
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.2\SharedLibraries.deps.json
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.2\SharedLibraries.dll
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.2\SharedLibraries.pdb
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.2\SharedLibraries.csprojAssemblyReference.cache
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.2\SharedLibraries.csproj.CoreCompileInputs.cache
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.2\SharedLibraries.AssemblyInfoInputs.cache
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.2\SharedLibraries.AssemblyInfo.cs
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.2\SharedLibraries.dll
+C:\Users\nmiric\source\repos\MSTest\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.2\SharedLibraries.pdb

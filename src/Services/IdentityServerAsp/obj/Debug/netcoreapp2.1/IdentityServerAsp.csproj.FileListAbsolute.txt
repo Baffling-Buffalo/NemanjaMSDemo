@@ -1,0 +1,12 @@
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\bin\Debug\netcoreapp2.1\IdentityServerAsp.deps.json
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\bin\Debug\netcoreapp2.1\IdentityServerAsp.runtimeconfig.json
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\bin\Debug\netcoreapp2.1\IdentityServerAsp.runtimeconfig.dev.json
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\bin\Debug\netcoreapp2.1\IdentityServerAsp.dll
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\bin\Debug\netcoreapp2.1\IdentityServerAsp.pdb
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\IdentityServerAsp.csprojAssemblyReference.cache
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\IdentityServerAsp.csproj.CoreCompileInputs.cache
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\IdentityServerAsp.AssemblyInfoInputs.cache
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\IdentityServerAsp.AssemblyInfo.cs
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\IdentityServerAsp.dll
+C:\Users\nmiric\source\repos\MSTest\IdentityServerAsp\obj\Debug\netcoreapp2.1\IdentityServerAsp.pdb
