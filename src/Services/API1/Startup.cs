@@ -45,19 +45,19 @@ namespace API1
             services.AddCustomMVC(Configuration)
                 .AddCustomDbContext(Configuration);
 
-            //Used to know where is IdentityServer4 located to go validate the token
-            //and set the name of this API as audience, which is used at identityserver
-            //as scope to which client can  have access to
-            services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = Configuration["IdentityServer"];
-                    options.RequireHttpsMetadata = false;
-                    options.ApiName = "api1";
+            ////Used to know where is IdentityServer4 located to go validate the token
+            ////and set the name of this API as audience, which is used at identityserver
+            ////as scope to which client can  have access to
+            //services.AddAuthentication("Bearer")
+            //    .AddIdentityServerAuthentication(options =>
+            //    {
+            //        options.Authority = Configuration["IdentityServer"];
+            //        options.RequireHttpsMetadata = false;
+            //        options.ApiName = "api1";
 
-                    options.EnableCaching = true;
-                    options.CacheDuration = TimeSpan.FromMinutes(10);
-                });
+            //        options.EnableCaching = true;
+            //        options.CacheDuration = TimeSpan.FromMinutes(10);
+            //    });
 
             services.AddTransient<IDataService, DataService>();
 
@@ -102,7 +102,7 @@ namespace API1
             // Used to get correlationId from incoming requests or set new one if not existing
             app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
             // app.UseCors("default");
-            app.UseAuthentication(); // Not needed if gateway handles authentication, authorization and scopes
+            // app.UseAuthentication(); // Not needed if gateway handles authentication, authorization and scopes
             app.UseMiddleware<UserSerilogSpecificLoggingMiddleware>();
 
             app.UseMvc();
