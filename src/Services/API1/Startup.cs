@@ -99,6 +99,7 @@ namespace API1
                 // app.UseHttpsRedirection();  // Not needed if using gateway, which will handle https
                 // app.UseHsts(); // Not needed if using gateway, which will handle https
             }
+            // Used to get correlationId from incoming requests or set new one if not existing
             app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
             // app.UseCors("default");
             app.UseAuthentication(); // Not needed if gateway handles authentication, authorization and scopes

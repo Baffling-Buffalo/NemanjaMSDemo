@@ -63,7 +63,9 @@ namespace MVCClient
                 app.UseHttpsRedirection();
             }
 
+            // Used to get correlationId from incoming requests or set new one if not existing
             app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
+            // Used for header forwarding
             app.UseHeaderPropagation();
 
             app.UseAuthentication();
@@ -103,8 +105,7 @@ namespace MVCClient
             //register delegating handlers
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
-            //services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID", context => Guid.NewGuid().ToString()));
-            services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID", context => GetNewCorrelationID()));
+            services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID"));
 
             //set 5 min as the lifetime for each HttpMessageHandler int the pool
             services.AddHttpClient("extendedhandlerlifetime")
@@ -114,8 +115,7 @@ namespace MVCClient
             services.AddHttpClient<IApi1Service, Api1Service>()
                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Sample. Default lifetime is 2 minutes
                    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                   .AddHeaderPropagation(o => o.Headers.Add("CorrelationID"))
-                   //.AddHttpMessageHandler<HttpClientRequestIdDelegatingHandler>()
+                   .AddHeaderPropagation(o => o.Headers.Add("CorrelationID")) // Used so the client forwards correletionID header for each request
                    .AddPolicyHandler(GetRetryPolicy())
                    .AddPolicyHandler(GetCircuitBreakerPolicy());
             
@@ -164,10 +164,10 @@ namespace MVCClient
                     options.Scope.Add("apiGW");
                     options.Scope.Add("offline_access");
                     options.Scope.Add("profile");
-                    options.Scope.Add("roles"); // role try
+                    options.Scope.Add("roles");
                     options.ClaimActions.MapJsonKey("website", "website");
 
-                    options.TokenValidationParameters = new TokenValidationParameters // role try
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
                         NameClaimType = "name",
                         RoleClaimType = "role"
@@ -191,26 +191,6 @@ namespace MVCClient
             return HttpPolicyExtensions
                 .HandleTransientHttpError()
                 .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
-        }
-
-        /// <summary>
-        /// GetNewCorrelationID is used to make new Guid-CorrelationID and add it to LogContexts properties
-        /// </summary>
-        /// <returns> Guid-CorrelationID</returns>
-        static string GetNewCorrelationID()
-        {
-            string correlationId = Guid.NewGuid().ToString();
-            try
-            {
-                //Add as many nested usings as needed, for adding more properties 
-                LogContext.PushProperty("CorrelationID", correlationId, true);
-                return correlationId;
-            }
-            //To make sure that we don't loose the scope in case of an unexpected error
-            catch (Exception ex)
-            {
-                return "couldnt generate correlationId. Error: " + ex.Message;
-            }
         }
     }
 }

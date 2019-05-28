@@ -31,7 +31,7 @@ namespace IdentityServerAsp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID"))
+            services
                 .AddCustomMvc(Configuration)
                 .AddCustomDbContext(Configuration)
                 .AddIdentityServer(Configuration,Environment)
@@ -51,8 +51,8 @@ namespace IdentityServerAsp
                 //app.UseHttpsRedirection(); 
             }
 
+            // Used to get correlationId from incoming requests or set new one if not existing
             app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
-            app.UseHeaderPropagation();
 
             app.UseStaticFiles();
             app.UseIdentityServer();
