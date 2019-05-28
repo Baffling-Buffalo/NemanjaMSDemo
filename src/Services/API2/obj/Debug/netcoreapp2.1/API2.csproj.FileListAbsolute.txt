@@ -26,3 +26,17 @@ C:\Users\nmiric\source\repos\MSTest\src\Services\API2\obj\Debug\netcoreapp2.1\AP
 C:\Users\nmiric\source\repos\MSTest\src\Services\API2\obj\Debug\netcoreapp2.1\API2.RazorTargetAssemblyInfo.cache
 C:\Users\nmiric\source\repos\MSTest\src\Services\API2\obj\Debug\netcoreapp2.1\API2.dll
 C:\Users\nmiric\source\repos\MSTest\src\Services\API2\obj\Debug\netcoreapp2.1\API2.pdb
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\bin\Debug\netcoreapp2.1\API2.deps.json
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\bin\Debug\netcoreapp2.1\API2.runtimeconfig.json
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\bin\Debug\netcoreapp2.1\API2.runtimeconfig.dev.json
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\bin\Debug\netcoreapp2.1\API2.dll
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\bin\Debug\netcoreapp2.1\API2.pdb
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.csprojAssemblyReference.cache
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.csproj.CoreCompileInputs.cache
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.RazorAssemblyInfo.cache
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.RazorAssemblyInfo.cs
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.AssemblyInfoInputs.cache
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.AssemblyInfo.cs
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.RazorTargetAssemblyInfo.cache
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.dll
+C:\Users\kstaletovic\Desktop\NemanjaMSDemo-master\src\Services\API2\obj\Debug\netcoreapp2.1\API2.pdb

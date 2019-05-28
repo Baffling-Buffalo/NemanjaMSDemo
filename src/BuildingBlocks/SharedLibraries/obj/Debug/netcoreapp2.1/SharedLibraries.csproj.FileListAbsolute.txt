@@ -1,0 +1,9 @@
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.1\SharedLibraries.deps.json
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.1\SharedLibraries.dll
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.1\SharedLibraries.pdb
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.csprojAssemblyReference.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.csproj.CoreCompileInputs.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.AssemblyInfoInputs.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.AssemblyInfo.cs
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.dll
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.pdb

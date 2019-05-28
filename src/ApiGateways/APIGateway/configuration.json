@@ -76,7 +76,7 @@
 
     {
       "UpstreamPathTemplate": "/api1/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamPathTemplate": "/api1/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using API1.Models;
+using API1.Services;
 using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +20,12 @@ namespace API1.Controllers
     public class Api1Controller : ControllerBase
     {
         private readonly Api1Context api1Context;
+        private IDataService dataService { get; set; }
         //private readonly ILogger logger;
 
-        public Api1Controller(Api1Context api1Context)
+        public Api1Controller(Api1Context api1Context, IDataService dataService)
         {
+            this.dataService = dataService;
             this.api1Context = api1Context;
             //this.logger = logger;
         }
@@ -74,6 +77,18 @@ namespace API1.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [Route("UpdateData")]
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<ActionResult> UpdateData(Api1Data data)
+        {
+            if (await dataService.UpdateData(data))
+                return Ok();
+            else
+                return BadRequest();
         }
     }
 }

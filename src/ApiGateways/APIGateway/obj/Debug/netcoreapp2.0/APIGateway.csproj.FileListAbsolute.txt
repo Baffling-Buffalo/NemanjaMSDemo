@@ -54,3 +54,17 @@ C:\Users\nmiric\source\repos\MSTest\src\APIGateways\APIGateway\obj\Debug\netcore
 C:\Users\nmiric\source\repos\MSTest\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.RazorTargetAssemblyInfo.cache
 C:\Users\nmiric\source\repos\MSTest\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.dll
 C:\Users\nmiric\source\repos\MSTest\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.pdb
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\bin\Debug\netcoreapp2.0\APIGateway.deps.json
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\bin\Debug\netcoreapp2.0\APIGateway.runtimeconfig.json
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\bin\Debug\netcoreapp2.0\APIGateway.runtimeconfig.dev.json
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\bin\Debug\netcoreapp2.0\APIGateway.dll
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\bin\Debug\netcoreapp2.0\APIGateway.pdb
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.csprojAssemblyReference.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.csproj.CoreCompileInputs.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.RazorAssemblyInfo.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.RazorAssemblyInfo.cs
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.AssemblyInfoInputs.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.AssemblyInfo.cs
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.RazorTargetAssemblyInfo.cache
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.dll
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\APIGateways\APIGateway\obj\Debug\netcoreapp2.0\APIGateway.pdb

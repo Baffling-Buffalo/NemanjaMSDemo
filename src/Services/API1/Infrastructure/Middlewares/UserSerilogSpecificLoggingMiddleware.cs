@@ -10,9 +10,9 @@ namespace API1.Infrastructure.Middlewares
     public class UserSerilogSpecificLoggingMiddleware
     {
         private readonly RequestDelegate next;
-        private readonly ILogger<ScopedSerilogSpecificLoggingMiddleware> logger;
+        private readonly ILogger<UserSerilogSpecificLoggingMiddleware> logger;
 
-        public UserSerilogSpecificLoggingMiddleware(RequestDelegate next, ILogger<ScopedSerilogSpecificLoggingMiddleware> logger)
+        public UserSerilogSpecificLoggingMiddleware(RequestDelegate next, ILogger<UserSerilogSpecificLoggingMiddleware> logger)
         {
             this.next = next ?? throw new ArgumentNullException(nameof(next));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));

@@ -20,6 +20,13 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using API1.Models;
 using System.Reflection;
+using BuildingBlocksEventBusProjects.EventBusRabbitMQ;
+using BuildingBlocks.EventBusProjects.EventBus.Abstractions;
+using Autofac;
+using BuildingBlocks.EventBusProjects.EventBus;
+using API1.Services;
+using RabbitMQ.Client;
+using Autofac.Extensions.DependencyInjection;
 
 namespace API1
 {
@@ -33,7 +40,7 @@ namespace API1
         public IConfiguration Configuration { get; }
 
         //This method gets called by the runtime.Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMVC(Configuration)
                 .AddCustomDbContext(Configuration);
@@ -51,6 +58,33 @@ namespace API1
                     options.EnableCaching = true;
                     options.CacheDuration = TimeSpan.FromMinutes(10);
                 });
+
+            services.AddTransient<IDataService, DataService>();
+
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            {
+                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+
+                var factory = new ConnectionFactory()
+                {
+                    HostName = "localhost",
+                    DispatchConsumersAsync = true,
+                    UserName = "guest",
+                    Password = "guest"
+                };
+
+                var retryCount = 5;
+               
+                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
+            });
+
+            services.RegisterEventBus(Configuration);
+
+            //configure autofac
+            var container = new ContainerBuilder();
+            container.Populate(services);
+
+            return new AutofacServiceProvider(container.Build());
         }
 
         //This method gets called by the runtime.Use this method to configure the HTTP request pipeline.
@@ -67,9 +101,12 @@ namespace API1
             }
             app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
             // app.UseCors("default");
-            // app.UseAuthentication(); // Not needed if gateway handles authentication, authorization and scopes
+            app.UseAuthentication(); // Not needed if gateway handles authentication, authorization and scopes
+            app.UseMiddleware<UserSerilogSpecificLoggingMiddleware>();
+
             app.UseMvc();
         }
+
     }
 
     static class ServisCollectionExtension
@@ -78,7 +115,7 @@ namespace API1
         {
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-                //.AddControllersAsServices();
+            //.AddControllersAsServices();
 
             return services;
         }
@@ -95,6 +132,33 @@ namespace API1
                                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                      });
             });
+
+            return services;
+        }
+
+        public static IServiceCollection RegisterEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            //var subscriptionClientName = configuration["SubscriptionClientName"];
+            var subscriptionClientName = "Api1";
+
+
+            services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+            {
+                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+                var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+                var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                var retryCount = 5;
+                //if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
+                //{
+                //    retryCount = int.Parse(configuration["EventBusRetryCount"]);
+                //}
+
+                return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+            });
+
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
 
             return services;
         }
