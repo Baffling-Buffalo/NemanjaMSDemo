@@ -164,7 +164,8 @@ namespace MVCClient
                     options.Scope.Add("apiGW");
                     options.Scope.Add("offline_access");
                     options.Scope.Add("profile");
-                    options.Scope.Add("roles"); // role try
+                    //options.Scope.Add("roles"); // role try
+                    options.Scope.Add("signalrhub");
                     options.ClaimActions.MapJsonKey("website", "website");
 
                     options.TokenValidationParameters = new TokenValidationParameters // role try

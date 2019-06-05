@@ -14,33 +14,34 @@ namespace IdentityServerAsp
     {
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
-            var roleResourse = new IdentityResource
-            {
-                Name = "roles",
-                DisplayName = "Roles",
-                Description = "Allow the service access to your user roles.",
-                UserClaims = new[] { JwtClaimTypes.Role, ClaimTypes.Role },
-                ShowInDiscoveryDocument = true,
-                Required = true,
-                Emphasize = true
-            };
+            //var roleResourse = new IdentityResource
+            //{
+            //    Name = "roles",
+            //    DisplayName = "Roles",
+            //    Description = "Allow the service access to your user roles.",
+            //    UserClaims = new[] { JwtClaimTypes.Role, ClaimTypes.Role },
+            //    ShowInDiscoveryDocument = true,
+            //    Required = true,
+            //    Emphasize = true
+            //};
 
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
-                roleResourse
+                new IdentityResources.Profile()
+                //roleResourse
             };
         }
 
         public static IEnumerable<ApiResource> GetApis()
         {
             return new List<ApiResource>
-        {
-            new ApiResource("api1", "API 1", new[]{JwtClaimTypes.Role }),
-            new ApiResource("api2", "API 2", new[]{JwtClaimTypes.Role }),
-            new ApiResource("apiGW", "API Gateway", new[]{JwtClaimTypes.Role }),
-        };
+            {
+                new ApiResource("api1", "API 1"),
+                new ApiResource("api2", "API 2"),
+                new ApiResource("apiGW", "API Gateway"),
+                new ApiResource("signalrhub", "SignalRHub")
+            };
         }
 
         public static IEnumerable<Client> GetClients()
@@ -69,9 +70,10 @@ namespace IdentityServerAsp
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "roles", // try
+                        //"roles", // try
                         "api1",
-                        "api2"
+                        "api2",
+                        "signalrhub"
                     },
 
                     AllowOfflineAccess = true,

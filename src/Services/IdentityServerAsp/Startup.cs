@@ -4,9 +4,11 @@
 
 using IdentityServer4;
 using IdentityServer4.AspNetIdentity;
+using IdentityServer4.Services;
 using IdentityServerAsp.Data;
 using IdentityServerAsp.Infrastructure.Middlewares;
 using IdentityServerAsp.Models;
+using IdentityServerAsp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -36,6 +38,8 @@ namespace IdentityServerAsp
                 .AddCustomDbContext(Configuration)
                 .AddIdentityServer(Configuration,Environment)
                 .AddCustomAuthentication(Configuration);
+
+
         }
 
         public void Configure(IApplicationBuilder app)
@@ -57,6 +61,7 @@ namespace IdentityServerAsp
             app.UseStaticFiles();
             app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();
+
         }
     }
 
@@ -100,6 +105,7 @@ namespace IdentityServerAsp
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
+            .AddAspNetIdentity<ApplicationUser>()
             .AddConfigurationStore(options =>
             {
                 options.ConfigureDbContext = b =>
@@ -115,8 +121,9 @@ namespace IdentityServerAsp
 
                 // this enables automatic token cleanup. this is optional.
                 options.EnableTokenCleanup = true;
-            })
-            .AddAspNetIdentity<ApplicationUser>();
+            });
+
+            services.AddTransient<IProfileService, ProfileService>();
 
             if (environment.IsDevelopment())
             {

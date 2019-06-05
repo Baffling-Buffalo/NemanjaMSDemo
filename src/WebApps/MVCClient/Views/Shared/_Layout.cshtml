@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - MVCClient</title>
 
     <partial name="_Styles" />
-
+    <link href="~/lib/toastr/toastr.css" rel="stylesheet" />
 </head>
 <body class="pt-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
@@ -48,6 +48,7 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         <footer>
@@ -58,5 +59,55 @@
     <partial name="_Scripts" />
 
     @RenderSection("Scripts", required: false)
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    @using Microsoft.AspNetCore.Authentication;
+    @using Microsoft.Extensions.Options
+    @inject IOptions<AppSettings> settings
+    <script type="text/javascript">
+
+        if ('@User.Identity.IsAuthenticated' === 'True') {
+
+            stablishConnection();
+        }
+
+        function stablishConnection() {
+            let connection = new signalR.HubConnectionBuilder()
+                .withUrl('@settings.Value.SignalrHubUrl/notificationshub', {
+                    transport: signalR.HttpTransportType.LongPolling,
+                    accessTokenFactory: function() {
+                        return "Authorization", getToken();
+                    }
+                })
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
+
+            connection.start()
+                .then(function () {
+                    console.log('User Registered to Signalr Hub');
+                    registerNotificationHandlers(connection);
+                })
+                .catch(function (err) {
+                    return console.error(err.toString());
+                });
+        }
+
+        function registerNotificationHandlers(connection) {
+
+            //connection.on("DataUpdated", function(data){
+            //    toastr.success("Data with id: " + data.dataId + " was changed to: " + data.data);
+            //});
+
+            connection.on("Test", function(data){
+                toastr.success("Data with id: " + data.dataId + " was changed to: " + data.data +" and username is: " + data.username);
+            });
+
+        }
+
+        function getToken() {
+            return '@Context.GetTokenAsync("access_token").Result';
+        }
+
+    </script>
 </body>
 </html>

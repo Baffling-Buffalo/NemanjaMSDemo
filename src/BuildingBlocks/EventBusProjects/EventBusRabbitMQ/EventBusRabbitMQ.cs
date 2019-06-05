@@ -89,7 +89,7 @@ namespace BuildingBlocksEventBusProjects.EventBusRabbitMQ
 
                 _logger.LogTrace("Declaring RabbitMQ exchange to publish event: {EventId}", @event.Id);
 
-                channel.ExchangeDeclare(exchange: BROKER_NAME, type: "direct");
+                channel.ExchangeDeclare(exchange: BROKER_NAME, type: "fanout");
 
                 var message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);
@@ -238,7 +238,7 @@ namespace BuildingBlocksEventBusProjects.EventBusRabbitMQ
             var channel = _persistentConnection.CreateModel();
 
             channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                    type: "direct");
+                                    type: "fanout");
 
             channel.QueueDeclare(queue: _queueName,
                                  durable: true,

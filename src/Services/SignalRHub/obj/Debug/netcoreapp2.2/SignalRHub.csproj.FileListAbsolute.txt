@@ -28,3 +28,7 @@ C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\Si
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\obj\Debug\netcoreapp2.2\SignalRHub.dll
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\obj\Debug\netcoreapp2.2\SignalRHub.pdb
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\obj\Debug\netcoreapp2.2\SignalRHub.csproj.CopyComplete
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\bin\Debug\netcoreapp2.2\EventBus.dll
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\bin\Debug\netcoreapp2.2\EventBusRabbitMQ.dll
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\bin\Debug\netcoreapp2.2\EventBusRabbitMQ.pdb
+C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\SignalRHub\bin\Debug\netcoreapp2.2\EventBus.pdb

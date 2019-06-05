@@ -50,7 +50,7 @@ namespace APIGateway
             services.AddAuthentication()
                 .AddIdentityServerAuthentication("Bearer", options =>
                 {
-                    options.Authority = Configuration["IdentityServer"];
+                    options.Authority = Configuration["IdentityUrl"];
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "apiGW";
                     options.SupportedTokens = SupportedTokens.Both;

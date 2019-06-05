@@ -13167,11 +13167,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API2\\API2.csproj",
+      "projectUniqueName": "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API2\\API2.csproj",
       "projectName": "API2",
-      "projectPath": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API2\\API2.csproj",
+      "projectPath": "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API2\\API2.csproj",
       "packagesPath": "C:\\Users\\kstaletovic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API2\\obj\\",
+      "outputPath": "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13190,11 +13190,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {
-              "projectPath": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj"
+            "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {
+              "projectPath": "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj"
             },
-            "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
-              "projectPath": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj"
+            "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
+              "projectPath": "C:\\Users\\kstaletovic\\source\\repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj"
             }
           }
         }

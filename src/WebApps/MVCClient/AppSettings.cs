@@ -14,6 +14,7 @@ namespace MVCClient
         public string IdentityUrl { get; set; }
         public string CallBackUrl { get; set; }
         public string AllowedHosts { get; set; } // not sure
+        public string SignalrHubUrl { get; set; }
         //public Logging Logging { get; set; }
     }
 }

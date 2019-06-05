@@ -52,7 +52,7 @@ namespace API2
             services.AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = Configuration["IdentityServer"];
+                    options.Authority = Configuration["IdentityUrl"];
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "api2";
 

@@ -43,23 +43,12 @@ namespace API1
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMVC(Configuration)
-                .AddCustomDbContext(Configuration);
-
-            //Used to know where is IdentityServer4 located to go validate the token
-            //and set the name of this API as audience, which is used at identityserver
-            //as scope to which client can  have access to
-            services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = Configuration["IdentityServer"];
-                    options.RequireHttpsMetadata = false;
-                    options.ApiName = "api1";
-
-                    options.EnableCaching = true;
-                    options.CacheDuration = TimeSpan.FromMinutes(10);
-                });
+                .AddCustomDbContext(Configuration)
+                .AddCustomAuthentication(Configuration);
 
             services.AddTransient<IDataService, DataService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
             {
@@ -159,6 +148,42 @@ namespace API1
             });
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            // prevent from mapping "sub" claim to nameidentifier.
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
+
+            //Used to know where is IdentityServer4 located to go validate the token
+            //and set the name of this API as audience, which is used at identityserver
+            //as scope to which client can  have access to
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = configuration.GetValue<string>("IdentityUrl");
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = "api1";
+
+                    options.EnableCaching = true;
+                    options.CacheDuration = TimeSpan.FromMinutes(10);
+                });
+
+            //var identityUrl = configuration.GetValue<string>("IdentityUrl");
+
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            //}).AddJwtBearer(options =>
+            //{
+            //    options.Authority = identityUrl;
+            //    options.RequireHttpsMetadata = false;
+            //    options.Audience = "orders";
+            //});
 
             return services;
         }

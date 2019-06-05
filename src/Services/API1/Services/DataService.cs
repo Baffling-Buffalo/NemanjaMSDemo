@@ -15,11 +15,13 @@ namespace API1.Services
     {
         private Api1Context dbContext { get; set; }
         private readonly IEventBus eventBus;
+        private IHttpContextAccessor httpContext;
 
-        public DataService(Api1Context dbContext, IEventBus eventBus)
+        public DataService(Api1Context dbContext, IEventBus eventBus, IHttpContextAccessor httpContext)
         {
             this.eventBus = eventBus;
             this.dbContext = dbContext;
+            this.httpContext = httpContext;
         }
 
         public async Task<bool> UpdateData(Api1Data data)
@@ -37,7 +39,7 @@ namespace API1.Services
                 PublishUpdatedDataIntegrationEvent(data);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }          
@@ -45,7 +47,7 @@ namespace API1.Services
 
         private void PublishUpdatedDataIntegrationEvent(Api1Data api1data)
         {
-            var @event = new DataUpdatedIntegrationEvent(api1data.Id, api1data.Data);
+            var @event = new DataUpdatedIntegrationEvent(api1data.Id, api1data.Data, httpContext.HttpContext.User.Identity.Name);
 
             eventBus.Publish(@event);
         }
