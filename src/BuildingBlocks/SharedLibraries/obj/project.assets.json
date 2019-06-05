@@ -688,23 +688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kstaletovic\\.nuget\\packages\\": {},
+    "C:\\Users\\nmiric\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
+      "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
       "projectName": "SharedLibraries",
-      "projectPath": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
-      "packagesPath": "C:\\Users\\kstaletovic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kstaletovic\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\obj\\",
+      "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
+      "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kstaletovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nmiric\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\Services\\API1_second\\API1_second.csproj": {}
+    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API1_second\\API1_second.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\Services\\API1_second\\API1_second.csproj": {
+    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API1_second\\API1_second.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\Services\\API1_second\\API1_second.csproj",
+        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API1_second\\API1_second.csproj",
         "projectName": "API1_second",
-        "projectPath": "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\Services\\API1_second\\API1_second.csproj",
+        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API1_second\\API1_second.csproj",
         "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\Services\\API1_second\\obj\\",
+        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\API1_second\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -17,7 +17,6 @@ namespace API2.Controllers
             return $"API2 - Anonymous data (everyone can access)";
         }
 
-        //[Authorize]
         [Route("userdata")]
         public string UserData()
         {
@@ -25,7 +24,6 @@ namespace API2.Controllers
         }
 
 
-        //[Authorize(Roles = "admin")]
         [Route("admindata")]
         public string AdminData()
         {

@@ -23,7 +23,6 @@ namespace APIGateway
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(env.ContentRootPath)
                    .AddJsonFile("appsettings.json", true, true)
-                   //add configuration.json
                    .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
                    .AddEnvironmentVariables();
 
@@ -44,8 +43,6 @@ namespace APIGateway
                     .SetIsOriginAllowed((host) => true)
                     .AllowCredentials());
             });
-
-            services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID"));
 
             services.AddAuthentication()
                 .AddIdentityServerAuthentication("Bearer", options =>
@@ -68,8 +65,9 @@ namespace APIGateway
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // Used to get correlationId from incoming requests or set new one if not existing
             app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
-            app.UseHeaderPropagation();
+            // Ocelot automaticly forwards headers to api request
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();

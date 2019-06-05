@@ -16,3 +16,12 @@ C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlo
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.AssemblyInfo.cs
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.dll
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.pdb
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\bin\Debug\netstandard2.0\EventBus.deps.json
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\bin\Debug\netstandard2.0\EventBus.dll
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\bin\Debug\netstandard2.0\EventBus.pdb
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.csprojAssemblyReference.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.csproj.CoreCompileInputs.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.AssemblyInfoInputs.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.AssemblyInfo.cs
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.dll
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\EventBusProjects\EventBus\obj\Debug\netstandard2.0\EventBus.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\APIGateways\\APIGateway\\APIGateway.csproj": {}
+    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\APIGateways\\APIGateway\\APIGateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\APIGateways\\APIGateway\\APIGateway.csproj": {
+    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\APIGateways\\APIGateway\\APIGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\APIGateways\\APIGateway\\APIGateway.csproj",
+        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\APIGateways\\APIGateway\\APIGateway.csproj",
         "projectName": "APIGateway",
-        "projectPath": "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\APIGateways\\APIGateway\\APIGateway.csproj",
+        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\APIGateways\\APIGateway\\APIGateway.csproj",
         "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmiric\\source\\repos\\MSTest\\src\\APIGateways\\APIGateway\\obj\\",
+        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\APIGateways\\APIGateway\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
