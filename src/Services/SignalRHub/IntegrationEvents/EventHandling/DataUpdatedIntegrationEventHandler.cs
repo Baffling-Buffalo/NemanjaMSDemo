@@ -26,7 +26,7 @@ namespace SignalRHub.IntegrationEvents.Handlers
 
         public async Task Handle(DataUpdatedIntegrationEvent @event)
         {
-            using (LogContext.PushProperty("IntegrationEventContext", $"{@event.Id}-{Program.AppName}"))
+            using (LogContext.PushProperty("CorrelationId", @event.CorrelationId))
             {
                 _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, Program.AppName, @event);
 

@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 
-namespace IdentityServerAsp.Infrastructure.Middlewares
+namespace APIGateway.Infrastructure.Middlewares
 {
-    public class UserSerilogSpecificLoggingMiddleware
+    public class UserSpecificSerilogLoggingMiddleware
     {
         private readonly RequestDelegate next;
-        private readonly ILogger<ScopedSerilogSpecificLoggingMiddleware> logger;
+        private readonly ILogger<UserSpecificSerilogLoggingMiddleware> logger;
 
-        public UserSerilogSpecificLoggingMiddleware(RequestDelegate next, ILogger<ScopedSerilogSpecificLoggingMiddleware> logger)
+        public UserSpecificSerilogLoggingMiddleware(RequestDelegate next, ILogger<UserSpecificSerilogLoggingMiddleware> logger)
         {
             this.next = next ?? throw new ArgumentNullException(nameof(next));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));

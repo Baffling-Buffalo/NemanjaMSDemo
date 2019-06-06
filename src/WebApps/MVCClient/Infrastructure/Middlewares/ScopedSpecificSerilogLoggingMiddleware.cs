@@ -7,16 +7,18 @@ using Serilog.Context;
 
 namespace MVCClient.Infrastructure.Middlewares
 {
-    public class ScopedSerilogSpecificLoggingMiddleware
+    public class ScopedSpecificSerilogLoggingMiddleware
     {
         const string CORRELATION_ID_HEADER_NAME = "CorrelationID";
         private readonly RequestDelegate next;
-        private readonly ILogger<ScopedSerilogSpecificLoggingMiddleware> logger;
+        private readonly ILogger<ScopedSpecificSerilogLoggingMiddleware> logger;
+        private readonly IHttpContextAccessor httpAccessor;
 
-        public ScopedSerilogSpecificLoggingMiddleware(RequestDelegate next, ILogger<ScopedSerilogSpecificLoggingMiddleware> logger)
+        public ScopedSpecificSerilogLoggingMiddleware(RequestDelegate next, ILogger<ScopedSpecificSerilogLoggingMiddleware> logger, IHttpContextAccessor httpAccessor)
         {
             this.next = next ?? throw new ArgumentNullException(nameof(next));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            this.httpAccessor = httpAccessor ?? throw new ArgumentNullException(nameof(httpAccessor));
         }
 
         public async Task Invoke(HttpContext context)
@@ -28,7 +30,7 @@ namespace MVCClient.Infrastructure.Middlewares
             try
             {
                 //Add as many nested usings as needed, for adding more properties 
-                using (LogContext.PushProperty(CORRELATION_ID_HEADER_NAME, correlationId, true))
+                using(LogContext.PushProperty(CORRELATION_ID_HEADER_NAME, correlationId, true))
                 {
                     await next.Invoke(context);
                 }

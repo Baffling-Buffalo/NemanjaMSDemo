@@ -8,7 +8,7 @@ namespace API1.IntegrationEvents.Events
 {
     public class DataUpdatedIntegrationEvent : IntegrationEvent
     {
-        public DataUpdatedIntegrationEvent(int dataId, string data, string username)
+        public DataUpdatedIntegrationEvent(string correlationId, int dataId, string data, string username) : base(correlationId)
         {
             DataId = dataId;
             Data = data;

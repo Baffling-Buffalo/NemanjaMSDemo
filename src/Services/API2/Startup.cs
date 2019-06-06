@@ -44,40 +44,10 @@ namespace API2
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMVC(Configuration)
-                .AddCustomDbContext(Configuration);
-
-            //Used to know where is IdentityServer4 located to go validate the token
-            //and set the name of this API as audience, which is used at identityserver
-            //as scope to which client can  have access to
-            services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = Configuration["IdentityUrl"];
-                    options.RequireHttpsMetadata = false;
-                    options.ApiName = "api2";
-
-                    options.EnableCaching = true;
-                    options.CacheDuration = TimeSpan.FromMinutes(10);
-                });
-
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
-            {
-                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
-
-                var factory = new ConnectionFactory()
-                {
-                    HostName = "localhost",
-                    DispatchConsumersAsync = true,
-                    UserName = "guest",
-                    Password = "guest"
-                };
-
-                var retryCount = 5;
-
-                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
-            });
-
-            services.RegisterEventBus(Configuration);
+                .AddCustomDbContext(Configuration)
+                .AddCustomAuthentication(Configuration)
+                .AddEventBus(Configuration)
+                .RegisterEventBus(Configuration);
 
             //configure autofac
             var container = new ContainerBuilder();
@@ -98,10 +68,10 @@ namespace API2
                 // app.UseHttpsRedirection();  // Not needed if using gateway, which will handle https
                 // app.UseHsts(); // Not needed if using gateway, which will handle https
             }
-            app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
+            app.UseMiddleware<ScopedSpecificSerilogLoggingMiddleware>();
             // app.UseCors("default");
             app.UseAuthentication(); // Not needed if gateway handles authentication, authorization and scopes
-            app.UseMiddleware<UserSerilogSpecificLoggingMiddleware>();
+            app.UseMiddleware<UserSpecificSerilogLoggingMiddleware>();
 
             app.UseMvc();
 
@@ -119,6 +89,8 @@ namespace API2
     {
         public static IServiceCollection AddCustomMVC(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //.AddControllersAsServices();
@@ -137,6 +109,65 @@ namespace API2
                                          //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
                                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                      });
+            });
+
+            return services;
+        }
+
+
+        public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            // prevent from mapping "sub" claim to nameidentifier.
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
+
+            //Used to know where is IdentityServer4 located to go validate the token
+            //and set the name of this API as audience, which is used at identityserver
+            //as scope to which client can  have access to
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = configuration.GetValue<string>("IdentityUrl");
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = "api1";
+
+                    options.EnableCaching = true;
+                    options.CacheDuration = TimeSpan.FromMinutes(10);
+                });
+
+            //var identityUrl = configuration.GetValue<string>("IdentityUrl");
+
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            //}).AddJwtBearer(options =>
+            //{
+            //    options.Authority = identityUrl;
+            //    options.RequireHttpsMetadata = false;
+            //    options.Audience = "orders";
+            //});
+
+            return services;
+        }
+
+        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            {
+                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+
+                var factory = new ConnectionFactory()
+                {
+                    HostName = "localhost",
+                    DispatchConsumersAsync = true,
+                    UserName = "guest",
+                    Password = "guest"
+                };
+
+                var retryCount = 5;
+
+                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
 
             return services;

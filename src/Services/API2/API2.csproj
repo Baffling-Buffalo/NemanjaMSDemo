@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\Middlewares\ScopedSerilogSpecificLoggingMiddleware.cs" />
+    <Compile Remove="Infrastructure\Middlewares\UserSerilogSpecificLoggingMiddleware.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

@@ -25,9 +25,9 @@ using MVCClient.Infrastructure;
 using MVCClient.Services;
 using Polly;
 using Polly.Extensions.Http;
-using MVCClient.Infrastructure.Middlewares;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
+using MVCClient.Infrastructure.Middlewares;
 
 namespace MVCClient
 {
@@ -63,12 +63,13 @@ namespace MVCClient
                 app.UseHttpsRedirection();
             }
 
-            app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
+            app.UseMiddleware<ScopedSpecificSerilogLoggingMiddleware>();
+            // For forwarding headers in requests
+            // https://github.com/alefranz/HeaderPropagation
             app.UseHeaderPropagation();
 
             app.UseAuthentication();
-            app.UseMiddleware<UserSerilogSpecificLoggingMiddleware>();
-
+            app.UseMiddleware<UserSpecificSerilogLoggingMiddleware>();
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -103,8 +104,9 @@ namespace MVCClient
             //register delegating handlers
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
-            //services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID", context => Guid.NewGuid().ToString()));
-            services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID", context => GetNewCorrelationID()));
+            // For forwarding headers in requests
+            // https://github.com/alefranz/HeaderPropagation
+            services.AddHeaderPropagation(o => o.Headers.Add("CorrelationID"));
 
             //set 5 min as the lifetime for each HttpMessageHandler int the pool
             services.AddHttpClient("extendedhandlerlifetime")
@@ -115,7 +117,6 @@ namespace MVCClient
                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Sample. Default lifetime is 2 minutes
                    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
                    .AddHeaderPropagation(o => o.Headers.Add("CorrelationID"))
-                   //.AddHttpMessageHandler<HttpClientRequestIdDelegatingHandler>()
                    .AddPolicyHandler(GetRetryPolicy())
                    .AddPolicyHandler(GetCircuitBreakerPolicy());
             
@@ -137,7 +138,7 @@ namespace MVCClient
                     options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
                 })
                 .AddCookie(setup => setup.ExpireTimeSpan = TimeSpan.FromHours(3))
-                // AddAutomaticTokenManagement is used to automaticlly renew access_token
+                // AddAutomaticTokenManagement is used to automaticlly renew access_token with renew_token
                 .AddAutomaticTokenManagement(opt => 
                 {
                     opt.RefreshBeforeExpiration = TimeSpan.FromMinutes(20);
@@ -148,7 +149,7 @@ namespace MVCClient
 
                     options.Authority = identityUrl.ToString();
                     options.SignedOutRedirectUri = callBackUrl.ToString();
-                    options.RequireHttpsMetadata = false;
+                    options.RequireHttpsMetadata = false; // PRODUCTION - should stay true
 
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
@@ -157,18 +158,19 @@ namespace MVCClient
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
 
-                    options.ClaimActions.MapJsonKey("role", "role", "role"); // mapping role claims
-
                     options.Scope.Add("api1");
                     options.Scope.Add("api2");
                     options.Scope.Add("apiGW");
                     options.Scope.Add("offline_access");
                     options.Scope.Add("profile");
-                    //options.Scope.Add("roles"); // role try
+                    options.Scope.Add("openid");
+                    //options.Scope.Add("roles"); // role as resource
                     options.Scope.Add("signalrhub");
+
+                    options.ClaimActions.MapJsonKey("role", "role", "role"); // mapping role claims
                     options.ClaimActions.MapJsonKey("website", "website");
 
-                    options.TokenValidationParameters = new TokenValidationParameters // role try
+                    options.TokenValidationParameters = new TokenValidationParameters // role as resource
                     {
                         NameClaimType = "name",
                         RoleClaimType = "role"
@@ -198,7 +200,7 @@ namespace MVCClient
         /// GetNewCorrelationID is used to make new Guid-CorrelationID and add it to LogContexts properties
         /// </summary>
         /// <returns> Guid-CorrelationID</returns>
-        static string GetNewCorrelationID()
+        static string GetNewCorrelationID() // TODO: not needed?
         {
             string correlationId = Guid.NewGuid().ToString();
             try

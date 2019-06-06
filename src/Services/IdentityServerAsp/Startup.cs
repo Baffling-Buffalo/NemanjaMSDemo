@@ -56,10 +56,12 @@ namespace IdentityServerAsp
             }
 
             // Used to get correlationId from incoming requests or set new one if not existing
-            app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
+            app.UseMiddleware<ScopedSpecificSerilogLoggingMiddleware>();
 
             app.UseStaticFiles();
             app.UseIdentityServer();
+            app.UseMiddleware<UserSpecificSerilogLoggingMiddleware>();
+
             app.UseMvcWithDefaultRoute();
 
         }

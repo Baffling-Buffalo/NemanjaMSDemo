@@ -61,9 +61,9 @@ namespace API2
             columnOptions.Store.Add(StandardColumn.LogEvent);
             columnOptions.AdditionalColumns = new Collection<SqlColumn>()
             {
-                new SqlColumn("ApplicationContext", System.Data.SqlDbType.NVarChar),
-                new SqlColumn("CorrelationID", System.Data.SqlDbType.NVarChar),
-                new SqlColumn("Username", System.Data.SqlDbType.NVarChar)
+                 new SqlColumn("ApplicationContext", System.Data.SqlDbType.NVarChar, dataLength: 25),
+                new SqlColumn("CorrelationID", System.Data.SqlDbType.NVarChar, dataLength:36),
+                new SqlColumn("Username", System.Data.SqlDbType.NVarChar, dataLength: 50)
             };
             columnOptions.LogEvent.ExcludeAdditionalProperties = true;
             columnOptions.LogEvent.ExcludeStandardColumns = true;

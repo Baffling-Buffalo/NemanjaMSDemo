@@ -5,18 +5,20 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 
-namespace API2.Infrastructure.Middlewares
+namespace SharedLibraries.Middlewares
 {
-    public class ScopedSerilogSpecificLoggingMiddleware
+    public class ScopedSpecificSerilogLoggingMiddleware
     {
         const string CORRELATION_ID_HEADER_NAME = "CorrelationID";
         private readonly RequestDelegate next;
-        private readonly ILogger<ScopedSerilogSpecificLoggingMiddleware> logger;
+        private readonly ILogger<ScopedSpecificSerilogLoggingMiddleware> logger;
+        private readonly IHttpContextAccessor httpAccessor;
 
-        public ScopedSerilogSpecificLoggingMiddleware(RequestDelegate next, ILogger<ScopedSerilogSpecificLoggingMiddleware> logger)
+        public ScopedSpecificSerilogLoggingMiddleware(RequestDelegate next, ILogger<ScopedSpecificSerilogLoggingMiddleware> logger, IHttpContextAccessor httpAccessor)
         {
             this.next = next ?? throw new ArgumentNullException(nameof(next));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            this.httpAccessor = httpAccessor ?? throw new ArgumentNullException(nameof(httpAccessor));
         }
 
         public async Task Invoke(HttpContext context)

@@ -5,15 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 
-namespace IdentityServerAsp.Infrastructure.Middlewares
+namespace SharedLibraries.Middlewares
 {
-    public class ScopedSerilogSpecificLoggingMiddleware
+    public class UserSpecificSerilogLoggingMiddleware
     {
-        const string CORRELATION_ID_HEADER_NAME = "CorrelationID";
         private readonly RequestDelegate next;
-        private readonly ILogger<ScopedSerilogSpecificLoggingMiddleware> logger;
+        private readonly ILogger<UserSpecificSerilogLoggingMiddleware> logger;
 
-        public ScopedSerilogSpecificLoggingMiddleware(RequestDelegate next, ILogger<ScopedSerilogSpecificLoggingMiddleware> logger)
+        public UserSpecificSerilogLoggingMiddleware(RequestDelegate next, ILogger<UserSpecificSerilogLoggingMiddleware> logger)
         {
             this.next = next ?? throw new ArgumentNullException(nameof(next));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -23,12 +22,12 @@ namespace IdentityServerAsp.Infrastructure.Middlewares
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
 
-            var correlationId = GetOrAddCorrelationHeader(context);
+            var username = context.User.Identity.IsAuthenticated ? context.User.Identity.Name : "Unauthorized";
 
             try
             {
                 //Add as many nested usings as needed, for adding more properties 
-                using(LogContext.PushProperty(CORRELATION_ID_HEADER_NAME, correlationId, true))
+                using (LogContext.PushProperty("Username", username))
                 {
                     await next.Invoke(context);
                 }
@@ -40,15 +39,6 @@ namespace IdentityServerAsp.Infrastructure.Middlewares
             }
         }
 
-        private string GetOrAddCorrelationHeader(HttpContext context)
-        {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-
-            if (string.IsNullOrWhiteSpace(context.Request.Headers[CORRELATION_ID_HEADER_NAME]))
-                context.Request.Headers[CORRELATION_ID_HEADER_NAME] = Guid.NewGuid().ToString();
-
-            return context.Request.Headers[CORRELATION_ID_HEADER_NAME];
-        }
 
         private bool LogOnUnexpectedError(Exception ex)
         {

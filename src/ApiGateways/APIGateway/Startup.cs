@@ -10,7 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using IdentityServer4.AccessTokenValidation;
 using IdentityModel;
 using APIGateway.Aggregator;
-using APIGateway.BuildingBlocks.Middlewares;
+using APIGateway.Infrastructure.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace APIGateway
 {
@@ -44,8 +45,13 @@ namespace APIGateway
                     .AllowCredentials());
             });
 
-            services.AddAuthentication()
-                .AddIdentityServerAuthentication("Bearer", options =>
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            })
+                .AddIdentityServerAuthentication(options =>
                 {
                     options.Authority = Configuration["IdentityUrl"];
                     options.RequireHttpsMetadata = false;
@@ -57,7 +63,6 @@ namespace APIGateway
                     options.CacheDuration = TimeSpan.FromMinutes(10);
                 });
 
-
             // Add custom request aggregations
             services.AddOcelot(Configuration)
                 .AddSingletonDefinedAggregator<Api1and2Aggregator>(); ;
@@ -66,11 +71,13 @@ namespace APIGateway
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             // Used to get correlationId from incoming requests or set new one if not existing
-            app.UseMiddleware<ScopedSerilogSpecificLoggingMiddleware>();
+            app.UseMiddleware<ScopedSpecificSerilogLoggingMiddleware>();
             // Ocelot automaticly forwards headers to api request
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
+            app.UseMiddleware<UserSpecificSerilogLoggingMiddleware>();
+
             app.UseOcelot().Wait();
         }
     }

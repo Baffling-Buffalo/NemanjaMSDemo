@@ -40,3 +40,17 @@ C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\AP
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.RazorTargetAssemblyInfo.cache
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.dll
 C:\Users\kstaletovic\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.pdb
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\bin\Debug\netcoreapp2.1\API1_second.deps.json
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\bin\Debug\netcoreapp2.1\API1_second.runtimeconfig.json
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\bin\Debug\netcoreapp2.1\API1_second.runtimeconfig.dev.json
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\bin\Debug\netcoreapp2.1\API1_second.dll
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\bin\Debug\netcoreapp2.1\API1_second.pdb
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.csprojAssemblyReference.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.csproj.CoreCompileInputs.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.RazorAssemblyInfo.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.RazorAssemblyInfo.cs
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.AssemblyInfoInputs.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.AssemblyInfo.cs
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.RazorTargetAssemblyInfo.cache
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.dll
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\Services\API1_second\obj\Debug\netcoreapp2.1\API1_second.pdb

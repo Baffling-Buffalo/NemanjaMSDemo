@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API1.Extensions;
 using API1.IntegrationEvents.Events;
 using API1.Models;
 using BuildingBlocks.EventBusProjects.EventBus.Abstractions;
@@ -47,7 +48,7 @@ namespace API1.Services
 
         private void PublishUpdatedDataIntegrationEvent(Api1Data api1data)
         {
-            var @event = new DataUpdatedIntegrationEvent(api1data.Id, api1data.Data, httpContext.HttpContext.User.Identity.Name);
+            var @event = new DataUpdatedIntegrationEvent(httpContext.GetCorrelationId(), api1data.Id, api1data.Data, httpContext.HttpContext.User.Identity.Name);
 
             eventBus.Publish(@event);
         }

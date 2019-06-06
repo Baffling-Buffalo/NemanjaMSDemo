@@ -24,6 +24,8 @@
     <Compile Remove="Data\Migrations\IdentityServer\PersistedGrantDb\20190508091423_InitialIdentityServerPersistedGrantDbMigration1.cs" />
     <Compile Remove="Data\Migrations\IdentityServer\PersistedGrantDb\20190508091423_InitialIdentityServerPersistedGrantDbMigration1.Designer.cs" />
     <Compile Remove="Data\Migrations\IdentityServer\PersistedGrantDb\PersistedGrantDbContextModelSnapshot.cs" />
+    <Compile Remove="Infrastructure\Middlewares\ScopedSerilogSpecificLoggingMiddleware.cs" />
+    <Compile Remove="Infrastructure\Middlewares\UserSerilogSpecificLoggingMiddleware.cs" />
     <Compile Remove="ViewModels\AccountViewModels\ExternalLoginViewModel.cs" />
     <Compile Remove="ViewModels\AccountViewModels\ForgotPasswordViewModel.cs" />
     <Compile Remove="ViewModels\AccountViewModels\LoginWith2faViewModel.cs" />
