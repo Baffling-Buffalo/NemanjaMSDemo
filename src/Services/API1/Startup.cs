@@ -46,7 +46,7 @@ namespace API1
                 .AddCustomDbContext(Configuration)
                 .AddCustomAuthentication(Configuration)
                 .AddTransient<IDataService, DataService>()
-                .AddEventBus(Configuration)
+                .AddRabbitMQConnection(Configuration)
                 .RegisterEventBus(Configuration);
 
             //configure autofac
@@ -143,7 +143,7 @@ namespace API1
             return services;
         }
 
-        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRabbitMQConnection(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
             {

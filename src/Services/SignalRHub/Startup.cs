@@ -53,37 +53,18 @@ namespace SignalRHub
                         .AllowAnyHeader()
                         .SetIsOriginAllowed((host) => true)
                         .AllowCredentials());
+                })
+                .AddSignalR(o =>
+                {
+                    o.EnableDetailedErrors = true;
                 });
 
-            services.AddSignalR(o =>
-            {
-                o.EnableDetailedErrors = true;
-            });
+            services.AddRabbitMQConnection(Configuration)
+                .ConfigureAuthService(Configuration)
+                .RegisterEventBus(Configuration)
+                .AddOptions()
+                .AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
-            {
-                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
-
-                var factory = new ConnectionFactory()
-                {
-                    HostName = "localhost",
-                    UserName = "guest",
-                    Password = "guest",
-                    DispatchConsumersAsync = true
-                };
-
-                var retryCount = 5;
-
-                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
-            });
-
-            services.ConfigureAuthService(Configuration);
-
-            services.RegisterEventBus(Configuration);
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddOptions();
 
             //configure autofac
             var container = new ContainerBuilder();
@@ -136,6 +117,28 @@ namespace SignalRHub
     }
     static class ServisCollectionExtension
     {
+        public static IServiceCollection AddRabbitMQConnection(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            {
+                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+
+                var factory = new ConnectionFactory()
+                {
+                    HostName = "localhost",
+                    UserName = "guest",
+                    Password = "guest",
+                    DispatchConsumersAsync = true
+                };
+
+                var retryCount = 5;
+
+                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
+            });
+
+            return services;
+        }
+
         public static IServiceCollection RegisterEventBus(this IServiceCollection services, IConfiguration configuration)
         {
             var subscriptionClientName = "SignalRHub";

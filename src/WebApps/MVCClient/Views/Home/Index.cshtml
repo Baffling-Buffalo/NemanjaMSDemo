@@ -1,16 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Authentication
 
 <h4>API 1</h4>
-<a class="btn btn-primary m-2" asp-action="Api1Data">Call API1 - unauthorized</a>
+<a class="btn btn-primary m-2" asp-action="GetData" asp-controller="Api1">Call API1 - unauthorized</a>
 <a class="btn btn-primary m-2" asp-action="Api1UserData">Call API1 - authorized</a>
 <a class="btn btn-primary m-2" asp-action="Api1AdminData">Call API1 - as admin</a>
 <a class="btn btn-primary m-2" asp-action="DelayedDataRequests">Get delayed data - load balance example </a>
+<a class="btn btn-primary m-2" asp-action="Create" asp-controller="Api1"> Create api1 data</a>
 <br />
 <br />
-<form asp-action="CreateApi1Data" asp-controller="Home">
-    <input type="text" name="api1data" value="" />
-    <button type="submit">Create API1 data</button>
-</form>
 <hr />
 <br />
 

@@ -33,13 +33,13 @@ namespace MVCClient.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Api1Data()
-        {
+        //public async Task<IActionResult> Api1Data()
+        //{
             
-            ViewBag.Json = await _api1Svc.GetData();
+        //    ViewBag.Json = await _api1Svc.GetData();
 
-            return View("json");
-        }
+        //    return View("json");
+        //}
 
         [Authorize]
         public async Task<IActionResult> Api1UserData()
@@ -59,12 +59,12 @@ namespace MVCClient.Controllers
             return View("json");
         }
 
-        public async Task<IActionResult> CreateApi1Data(string api1data)
-        {
-            ViewBag.Json = await _api1Svc.CreateData(api1data);
+        //public async Task<IActionResult> CreateApi1Data(string api1data)
+        //{
+        //    ViewBag.Json = await _api1Svc.CreateData(api1data);
 
-            return View("json");
-        }
+        //    return View("json");
+        //}
 
         public async Task<IActionResult> Api2Data()
         {

@@ -28,6 +28,7 @@ using Polly.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 using MVCClient.Infrastructure.Middlewares;
+using MVCClient.Attributes;
 
 namespace MVCClient
 {
@@ -90,7 +91,10 @@ namespace MVCClient
             services.AddOptions();
             services.Configure<AppSettings>(configuration);
 
-            services.AddMvc()
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ModelValidationFilter));
+            })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             return services;
@@ -194,26 +198,6 @@ namespace MVCClient
             return HttpPolicyExtensions
                 .HandleTransientHttpError()
                 .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
-        }
-
-        /// <summary>
-        /// GetNewCorrelationID is used to make new Guid-CorrelationID and add it to LogContexts properties
-        /// </summary>
-        /// <returns> Guid-CorrelationID</returns>
-        static string GetNewCorrelationID() // TODO: not needed?
-        {
-            string correlationId = Guid.NewGuid().ToString();
-            try
-            {
-                //Add as many nested usings as needed, for adding more properties 
-                LogContext.PushProperty("CorrelationID", correlationId, true);
-                return correlationId;
-            }
-            //To make sure that we don't loose the scope in case of an unexpected error
-            catch (Exception ex)
-            {
-                return "couldnt generate correlationId. Error: " + ex.Message;
-            }
         }
     }
 }

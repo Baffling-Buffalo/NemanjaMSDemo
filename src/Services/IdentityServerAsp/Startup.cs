@@ -95,7 +95,6 @@ namespace IdentityServerAsp
             return services;
         }
 
-
         public static IServiceCollection AddIdentityServer(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment environment)
         {
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;

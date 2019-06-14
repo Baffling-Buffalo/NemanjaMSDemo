@@ -8,6 +8,7 @@ using API1.Services;
 using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
@@ -31,9 +32,22 @@ namespace API1.Controllers
         }
 
         [Route("data")]
-        public string Data()
+        public async Task<List<Api1Data>> Data(int? id)
         {
-            return $"API1 - Anonymous data (everyone can access)";
+            List<Api1Data> response = new List<Api1Data>();
+
+            if (id.HasValue)
+            {
+                var data = await api1Context.Api1Data.FindAsync(id);
+                if (data != null)
+                    response.Add(data);
+            }
+            else
+            {
+                response = await api1Context.Api1Data.ToListAsync();
+            }
+
+            return response;
         }
 
         [Route("userdata")]
@@ -61,15 +75,14 @@ namespace API1.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> CreateData(string data)
+        public async Task<ActionResult> CreateData(Api1Data data)
         {
-            Api1Data api1Data = new Api1Data() { Data = data };
-            api1Context.Add(api1Data);
+            api1Context.Add(data);
 
             try
             {
                 await api1Context.SaveChangesAsync();
-                Log.Information("Created Api1Data with data: {Api1Data} ", api1Data.Data);
+                Log.Information("Created Api1Data with data: {Api1Data} ", data.Data);
 
                 return CreatedAtAction(nameof(CreateData), new { data = data });
             }

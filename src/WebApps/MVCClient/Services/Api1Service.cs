@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using MVCClient.Infrastructure;
+using MVCClient.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +26,15 @@ namespace MVCClient.Services
             _remoteServiceBaseUrl = $"{_settings.Value.ApiGWUrl}";
         }
 
-        public async Task<string> GetData()
+        public async Task<List<Api1Object>> GetData(int? id)
         {
-            string uri = API.API1.GetData(_remoteServiceBaseUrl);
+            string uri = API.API1.GetData(_remoteServiceBaseUrl, id);
 
             var responseString = await _httpClient.GetStringAsync(uri);
 
-            return responseString;
+            var data = JsonConvert.DeserializeObject<List<Api1Object>>(responseString);
+
+            return data;
         }
 
         public async Task<string> GetUserData()
@@ -60,11 +64,13 @@ namespace MVCClient.Services
             return responseString;
         }
 
-        public async Task<string> CreateData(string data)
+        public async Task<string> CreateData(Api1Object data)
         {
-            string uri = API.API1.CreateData(_remoteServiceBaseUrl,data);
+            string uri = API.API1.CreateData(_remoteServiceBaseUrl);
 
-            var responseString = await _httpClient.PostAsync(uri, null);
+            var api1DataContent = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
+
+            var responseString = await _httpClient.PostAsync(uri, api1DataContent);
 
             responseString.EnsureSuccessStatusCode();
 

@@ -134,3 +134,4 @@ C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\WebApps\MVCClien
 C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\WebApps\MVCClient\obj\Debug\netcoreapp2.1\MVCClient.dll
 C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\WebApps\MVCClient\obj\Debug\netcoreapp2.1\MVCClient.pdb
 C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\WebApps\MVCClient\obj\Debug\netcoreapp2.1\MVCClient.csproj.CopyComplete
+C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\WebApps\MVCClient\obj\Debug\netcoreapp2.1\Razor\Views\Api1\Create.g.cshtml.cs

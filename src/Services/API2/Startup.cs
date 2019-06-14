@@ -46,7 +46,7 @@ namespace API2
             services.AddCustomMVC(Configuration)
                 .AddCustomDbContext(Configuration)
                 .AddCustomAuthentication(Configuration)
-                .AddEventBus(Configuration)
+                .AddRabbitMQConnection(Configuration)
                 .RegisterEventBus(Configuration);
 
             //configure autofac
@@ -114,7 +114,6 @@ namespace API2
             return services;
         }
 
-
         public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             // prevent from mapping "sub" claim to nameidentifier.
@@ -128,7 +127,7 @@ namespace API2
                 {
                     options.Authority = configuration.GetValue<string>("IdentityUrl");
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = "api1";
+                    options.ApiName = "api2";
 
                     options.EnableCaching = true;
                     options.CacheDuration = TimeSpan.FromMinutes(10);
@@ -151,7 +150,7 @@ namespace API2
             return services;
         }
 
-        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRabbitMQConnection(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
             {
