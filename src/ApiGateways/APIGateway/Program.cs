@@ -26,19 +26,37 @@ namespace APIGateway
 
             CreateSerilogLogger(configuration);
 
-            IWebHostBuilder builder = new WebHostBuilder();
-            builder.ConfigureServices(s =>
-            {
-                s.AddSingleton(builder);
-            });
-            builder.UseKestrel()
-                   .UseContentRoot(Directory.GetCurrentDirectory())
-                   .UseStartup<Startup>()
-                   .UseUrls("http://localhost:5000") // TODO: need?
-                   .UseSerilog(); 
+            new WebHostBuilder()
+                .UseKestrel()
+               .UseContentRoot(Directory.GetCurrentDirectory())
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   config
+                       .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                       .AddJsonFile("appsettings.json", true, true)
+                       .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                       .AddJsonFile("configuration.json", false, true)
+                       .AddEnvironmentVariables();
+               })
+               .UseIISIntegration()
+               .UseStartup<Startup>()
+               .UseSerilog()
+               .Build()
+               .Run();
 
-            var host = builder.Build();
-            host.Run();
+            //IWebHostBuilder builder = new WebHostBuilder();
+            //builder.ConfigureServices(s =>
+            //{
+            //    s.AddSingleton(builder);
+            //});
+            //builder.UseKestrel()
+            //       .UseContentRoot(Directory.GetCurrentDirectory())
+            //       .UseStartup<Startup>()
+            //       .UseUrls("http://localhost:5000") // TODO: need?
+            //       .UseSerilog(); 
+
+            //var host = builder.Build();
+            //host.Run();
         }
 
         public static void CreateSerilogLogger(IConfiguration configuration)

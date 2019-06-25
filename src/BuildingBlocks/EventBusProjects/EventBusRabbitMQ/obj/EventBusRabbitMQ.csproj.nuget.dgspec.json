@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {}
+    "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {
+    "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj",
+        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj",
         "projectName": "EventBusRabbitMQ",
-        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj",
+        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj",
         "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\obj\\",
+        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
-                "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj"
+              "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
+                "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
+    "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj",
+        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj",
         "projectName": "EventBus",
-        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj",
+        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj",
         "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\obj\\",
+        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

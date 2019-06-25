@@ -16,3 +16,12 @@ C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\S
 C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.AssemblyInfo.cs
 C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.dll
 C:\Users\nmiric\Source\Repos\Baffling-Buffalo\NemanjaMSDemo\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.pdb
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.1\SharedLibraries.deps.json
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.1\SharedLibraries.dll
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\bin\Debug\netcoreapp2.1\SharedLibraries.pdb
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.csprojAssemblyReference.cache
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.csproj.CoreCompileInputs.cache
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.AssemblyInfoInputs.cache
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.AssemblyInfo.cs
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.dll
+C:\Users\nmiric\Source\Repos\Forcs_MS\src\BuildingBlocks\SharedLibraries\obj\Debug\netcoreapp2.1\SharedLibraries.pdb

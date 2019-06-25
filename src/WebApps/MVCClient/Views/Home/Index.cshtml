@@ -1,25 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Authentication
 
 <h4>API 1</h4>
-<a class="btn btn-primary m-2" asp-action="GetData" asp-controller="Api1">Call API1 - unauthorized</a>
-<a class="btn btn-primary m-2" asp-action="Api1UserData">Call API1 - authorized</a>
-<a class="btn btn-primary m-2" asp-action="Api1AdminData">Call API1 - as admin</a>
-<a class="btn btn-primary m-2" asp-action="DelayedDataRequests">Get delayed data - load balance example </a>
-<a class="btn btn-primary m-2" asp-action="Create" asp-controller="Api1"> Create api1 data</a>
+<a class="btn btn-primary m-2" asp-action="Index" asp-controller="Api1">API 1 Data</a>
 <br />
 <br />
 <hr />
 <br />
 
-<h4>API 2</h4>
-<a class="btn btn-primary m-2" asp-action="Api2Data">Call API2 - unauthorized</a>
-<a class="btn btn-primary m-2" asp-action="Api2UserData">Call API2 - authorized</a>
-<a class="btn btn-primary m-2" asp-action="Api2AdminData">Call API2 - as admin</a>
-<a class="btn btn-primary m-2" asp-action="Api1and2Data">Call API1 and 2 </a>
-
-<br />
-<br />
-<h2>Claims</h2>
+<h2>@Localizer["Claims"]</h2>
 
 <dl>
     @foreach (var claim in User.Claims)
@@ -29,7 +17,7 @@
     }
 </dl>
 
-<h2>Properties</h2>
+<h2>@Localizer["Properties"]</h2>
 
 <dl>
     @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)

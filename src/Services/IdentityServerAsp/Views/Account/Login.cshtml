@@ -1,88 +1,110 @@
+﻿@{Layout = ""; }
 @model LoginViewModel
-
-<div class="login-page">
-    <div class="page-header">
-        <h1>Login</h1>
-    </div>
-
-    <partial name="_ValidationSummary" />
-
-    <div class="row">
-
-        @if (Model.EnableLocalLogin)
-        {
-            <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Local Login</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <form asp-route="Login">
-                            <input type="hidden" asp-for="ReturnUrl" />
-
-                            <fieldset>
-                                <div class="form-group">
-                                    <label asp-for="Username"></label>
-                                    <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Password"></label>
-                                    <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
-                                </div>
-                                @if (Model.AllowRememberLogin)
-                                {
-                                    <div class="form-group login-remember">
-                                        <label asp-for="RememberLogin">
-                                            <input asp-for="RememberLogin">
-                                            <strong>Remember My Login</strong>
-                                        </label>
-                                    </div>
-                                }
-                                <div class="form-group">
-                                    <button class="btn btn-primary" name="button" value="login">Login</button>
-                                    <button class="btn btn-default" name="button" value="cancel">Cancel</button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
+<!DOCTYPE html>
+    <html>
+    <head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AlgoDOCS | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="~/adminLTE/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/adminLTE/font-awesome/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="~/adminLTE/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/adminLTE/AdminLTE.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="~/adminLTE/blue.css">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- Google Font -->
+<link rel="stylesheet" href="~/fonts/Source_Sans_Pro/stylesheet.css">
+</head>
+    <body class="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <b>Algo</b>DOCS
             </div>
-        }
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <partial name="_ValidationSummary" />
 
-        @if (Model.VisibleExternalProviders.Any())
-        {
-            <div class="col-md-6 col-sm-6 external-providers">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">External Login</h3>
+                <form asp-route="Login" method="post">
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <div class="form-group has-feedback">
+                        <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-inline">
-                            @foreach (var provider in Model.VisibleExternalProviders)
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            @if (Model.AllowRememberLogin)
                             {
-                                <li>
-                                    <a class="btn btn-default"
-                                       asp-controller="External"
-                                       asp-action="Challenge"
-                                       asp-route-provider="@provider.AuthenticationScheme"
-                                       asp-route-returnUrl="@Model.ReturnUrl">
-                                        @provider.DisplayName
-                                    </a>
-                                </li>
+                                <div class="checkbox icheck">
+                                    <label>
+                                        <input asp-for="RememberLogin" type="checkbox"> Remember Me
+                                    </label>
+                                </div>
                             }
-                        </ul>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-xs-4">
+                            <button name="button" value="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
+                </form>
+                <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                    @*<a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                        <i class="fa fa-facebook"></i> Sign in using
+                        Facebook
+                    </a>*@
+                    @if (Model.ExternalProviders.FirstOrDefault(p => p.AuthenticationScheme == "Google") != null)
+                    {
+                        <a class="btn btn-block btn-social btn-google btn-flat"
+                           asp-controller="External"
+                           asp-action="Challenge"
+                           asp-route-provider="Google"
+                           asp-route-returnUrl="@Model.ReturnUrl">
+                            <i class="fa fa-google-plus"></i>Sign in using Google
+                        </a>
+                    }
+                    @if (Model.ExternalProviders.FirstOrDefault(p => p.AuthenticationScheme == "Windows") != null)
+                    {
+                        <a class="btn btn-block btn-social btn-flat"
+                           asp-controller="External"
+                           asp-action="Challenge"
+                           asp-route-provider="Windows"
+                           asp-route-returnUrl="@Model.ReturnUrl">
+                            <i class="fa fa-google-plus"></i>Sign in using Windows
+                        </a>
+                    }
                 </div>
+                <!-- /.social-auth-links -->
+                <a href="#">I forgot my password</a><br>
+                <a href="register.html" class="text-center">Register a new membership</a>
             </div>
-        }
-
-        @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
-        {
-            <div class="alert alert-warning">
-                <strong>Invalid login request</strong>
-                There are no login schemes configured for this client.
-            </div>
-        }
-    </div>
-</div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+        <!-- jQuery 3 -->
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="~/adminLTE/bootstrap.min.js"></script>
+        <!-- iCheck -->
+        <script src="~/adminLTE/icheck.min.js"></script>
+        <script src="~/adminLTE/loginInline.js"></script>
+    </body>
+    </html>

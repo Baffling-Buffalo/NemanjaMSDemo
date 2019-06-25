@@ -74,7 +74,7 @@ namespace IdentityServerAsp
             services.AddOptions();
 
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-
+            
             return services;
         }
 
@@ -132,7 +132,9 @@ namespace IdentityServerAsp
             }
             else
             {
-                throw new Exception("need to configure key material");
+                // TODO: uncomment for production, call builder.addsigningcredentials and add certificate
+                //throw new Exception("need to configure key material");
+                builder.AddDeveloperSigningCredential();
             }
 
             return services;

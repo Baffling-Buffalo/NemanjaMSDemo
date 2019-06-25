@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using API1.Extensions;
+using API1.IntegrationEvents.Events;
 using API1.Models;
 using API1.Services;
+using BuildingBlocks.EventBusProjects.EventBus.Abstractions;
 using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,19 +23,19 @@ namespace API1.Controllers
     [ApiController]
     public class Api1Controller : ControllerBase
     {
+        private readonly IEventBus eventBus;
         private readonly Api1Context api1Context;
-        private IDataService dataService { get; set; }
         //private readonly ILogger logger;
 
-        public Api1Controller(Api1Context api1Context, IDataService dataService)
+        public Api1Controller(IEventBus eventBus, Api1Context api1Context)
         {
-            this.dataService = dataService;
+            this.eventBus = eventBus;
             this.api1Context = api1Context;
             //this.logger = logger;
         }
 
-        [Route("data")]
-        public async Task<List<Api1Data>> Data(int? id)
+        [Route("getdata")]
+        public async Task<List<Api1Data>> GetData(int? id)
         {
             List<Api1Data> response = new List<Api1Data>();
 
@@ -48,27 +51,6 @@ namespace API1.Controllers
             }
 
             return response;
-        }
-
-        [Route("userdata")]
-        public string UserData()
-        {
-            return $"API1 - User data (registered users can access)";
-        }
-
-
-        [Route("admindata")]
-        public string AdminData()
-        {
-            return $"API1 - Admin data (users with role of admin can access)";
-        }
-
-
-        [Route("delayeddata")]
-        public string data()
-        {
-            System.Threading.Thread.Sleep(1000);
-            return $"some data";
         }
 
         [Route("CreateData")]
@@ -98,10 +80,27 @@ namespace API1.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult> UpdateData(Api1Data data)
         {
-            if (await dataService.UpdateData(data))
-                return Ok();
-            else
+            var currentData = await api1Context.Api1Data.AsNoTracking().SingleOrDefaultAsync(d => d.Id == data.Id);
+
+            if (currentData == null) // dosnt exists in db
                 return BadRequest();
-        }
+
+            try
+            {
+                api1Context.Api1Data.Update(data);
+
+                await api1Context.SaveChangesAsync();
+
+                var @event = new DataUpdatedIntegrationEvent(HttpContext.GetCorrelationId(), data.Id, data.Data, HttpContext.User.Identity.Name);
+
+                eventBus.Publish(@event);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
+        }       
     }
 }

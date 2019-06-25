@@ -19,6 +19,12 @@ namespace MVCClient.Controllers
             this.api1Service = api1Service;
         }
 
+        public async Task<IActionResult> Index(int? id = null)
+        {
+            List<Api1Object> api1Objects = await api1Service.GetData(id);
+            return View(api1Objects);
+        }
+
         // GET: Api1/Create
         public ActionResult Create()
         {
@@ -43,22 +49,25 @@ namespace MVCClient.Controllers
         }
 
         // GET: Api1/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
-            var data = api1Service.GetData(id);
-            return View();
+            var data = await api1Service.GetData(id);
+            return View(data.FirstOrDefault());
         }
 
         // POST: Api1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(Api1Object model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index", nameof(HomeController));
+                var data = await api1Service.GetData(model.Id);
+                if (data?.FirstOrDefault() != null)
+                {
+                    await api1Service.UpdateData(model);
+                }
+                return RedirectToAction("Index", "api1");
             }
             catch
             {
@@ -81,7 +90,7 @@ namespace MVCClient.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index", nameof(HomeController));
+                return RedirectToAction("Index", "api1");
             }
             catch
             {

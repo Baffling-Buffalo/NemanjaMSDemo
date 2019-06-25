@@ -13141,11 +13141,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\SignalRHub\\SignalRHub.csproj",
+      "projectUniqueName": "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\Services\\SignalRHub\\SignalRHub.csproj",
       "projectName": "SignalRHub",
-      "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\SignalRHub\\SignalRHub.csproj",
+      "projectPath": "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\Services\\SignalRHub\\SignalRHub.csproj",
       "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\SignalRHub\\obj\\",
+      "outputPath": "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\Services\\SignalRHub\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13164,11 +13164,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {
-              "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj"
+            "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj": {
+              "projectPath": "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj"
             },
-            "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
-              "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj"
+            "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj": {
+              "projectPath": "C:\\Users\\nmiric\\source\\repos\\Forcs_MS\\src\\BuildingBlocks\\EventBusProjects\\EventBus\\EventBus.csproj"
             }
           }
         }

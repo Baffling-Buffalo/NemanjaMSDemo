@@ -1,3 +1,11 @@
 ﻿@using MVCClient
 @using MVCClient.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, MVCClient
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> settings
+@using MVCClient.Resources
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer

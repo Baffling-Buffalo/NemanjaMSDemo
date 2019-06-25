@@ -37,7 +37,7 @@ namespace IdentityServerAsp
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "API 1"),
+                new ApiResource("api1", "API 1"){ },
                 new ApiResource("api2", "API 2"),
                 new ApiResource("apiGW", "API Gateway"),
                 new ApiResource("signalrhub", "SignalRHub")

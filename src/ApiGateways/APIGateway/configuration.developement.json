@@ -1,0 +1,74 @@
+{
+  "ReRoutes": [
+    // API 1 ROUTES
+
+    {
+      "UpstreamPathTemplate": "/api1/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamPathTemplate": "/api1/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+        // Load balancing example if you create another instance of same api
+        //,{
+        //  "Host": "localhost",
+        //  "Port": 5004
+        //}
+      ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api1" ]
+      }
+    },
+
+    // API 2 ROUTES
+    {
+      "UpstreamPathTemplate": "/api2/admindata",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api2/admindata",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "api2" ]
+      },
+      "RouteClaimsRequirement": {
+        "role": [ "admin", "SuperUser" ]
+      }
+    }
+  ],
+
+  // AGGREGATIONS - from one request to gateway making many requests
+  // and handling response in aggregator class
+  // ReRouteKeys are defined up in ReRoute objects as "key": "key_name" for routes you wish to combine and
+  // Aggregator is defined at startup
+
+  //"Aggregates": [
+  //  {
+  //    "ReRouteKeys": [
+  //      "api1data",
+  //      "api2data"
+  //    ],
+  //    "UpstreamPathTemplate": "/api1and2",
+  //    "Aggregator": "Api1and2Aggregator"
+  //  }
+  //],
+
+
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000",
+    "RequestIdKey": "CorrelationID"
+    //"AdministrationPath": "/administration"
+  }
+}

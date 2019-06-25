@@ -8,8 +8,10 @@ namespace MVCClient.ViewModels
 {
     public class Api1Object
     {
+        [Display(Name = "Id")]
         public int Id { get; set; }
-        [Required]
+        [Display(Name = "Data")]
+        [Required(ErrorMessage = "{0} is required")]
         public string Data { get; set; }
     }
 }

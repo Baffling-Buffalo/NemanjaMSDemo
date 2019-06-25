@@ -17,5 +17,15 @@ namespace API1.Extensions
 
             else return "";
         }
+
+        public static string GetCorrelationId(this HttpContext context)
+        {
+            var correlationHeader = context.Request.Headers["CorrelationId"];
+
+            if (!string.IsNullOrWhiteSpace(correlationHeader))
+                return correlationHeader;
+
+            else return "";
+        }
     }
 }

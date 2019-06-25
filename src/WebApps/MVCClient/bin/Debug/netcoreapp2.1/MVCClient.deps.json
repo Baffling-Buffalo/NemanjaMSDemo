@@ -41,6 +41,14 @@
         "runtime": {
           "MVCClient.dll": {}
         },
+        "resources": {
+          "en-US/MVCClient.resources.dll": {
+            "locale": "en-US"
+          },
+          "sr-Latn-RS/MVCClient.resources.dll": {
+            "locale": "sr-Latn-RS"
+          }
+        },
         "compile": {
           "MVCClient.dll": {}
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj": {}
+    "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj": {
+    "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj",
+        "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj",
         "projectName": "IdentityServerAsp",
-        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj",
+        "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\Services\\IdentityServerAsp\\IdentityServerAsp.csproj",
         "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\Services\\IdentityServerAsp\\obj\\",
+        "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\Services\\IdentityServerAsp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

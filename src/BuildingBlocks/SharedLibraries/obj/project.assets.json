@@ -2214,11 +2214,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
+      "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
       "projectName": "SharedLibraries",
-      "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
+      "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\SharedLibraries\\SharedLibraries.csproj",
       "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\BuildingBlocks\\SharedLibraries\\obj\\",
+      "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\BuildingBlocks\\SharedLibraries\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

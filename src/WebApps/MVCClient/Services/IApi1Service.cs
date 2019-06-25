@@ -9,9 +9,7 @@ namespace MVCClient.Services
     public interface IApi1Service
     {
         Task<List<Api1Object>> GetData(int? id);
-        Task<string> GetUserData();
-        Task<string> GetAdminData();
-        Task<string> GetApi1and2JoinedData();
-        Task<string> CreateData(Api1Object data);
+        Task UpdateData(Api1Object data);
+        Task CreateData(Api1Object data);      
     }
 }

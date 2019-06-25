@@ -19,18 +19,20 @@ namespace APIGateway
 
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(env.ContentRootPath)
-                   .AddJsonFile("appsettings.json", true, true)
-                   .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
-                   .AddEnvironmentVariables();
+            Configuration = configuration;
 
-            Configuration = builder.Build();
+            //var builder = new ConfigurationBuilder();
+            //builder.SetBasePath(env.ContentRootPath)
+            //       .AddJsonFile("appsettings.json", true, true)
+            //       .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
+            //       .AddEnvironmentVariables();
+
+            //Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -57,7 +59,7 @@ namespace APIGateway
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "apiGW";
                     options.SupportedTokens = SupportedTokens.Both;
-                    //options.ApiSecret = "secret"; );
+                    options.ApiSecret = "secret";
 
                     options.EnableCaching = true;
                     options.CacheDuration = TimeSpan.FromMinutes(10);

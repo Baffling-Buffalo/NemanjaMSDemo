@@ -13134,11 +13134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\WebApps\\MVCClient\\MVCClient.csproj",
+      "projectUniqueName": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\WebApps\\MVCClient\\MVCClient.csproj",
       "projectName": "MVCClient",
-      "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\WebApps\\MVCClient\\MVCClient.csproj",
+      "projectPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\WebApps\\MVCClient\\MVCClient.csproj",
       "packagesPath": "C:\\Users\\nmiric\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Baffling-Buffalo\\NemanjaMSDemo\\src\\WebApps\\MVCClient\\obj\\",
+      "outputPath": "C:\\Users\\nmiric\\Source\\Repos\\Forcs_MS\\src\\WebApps\\MVCClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

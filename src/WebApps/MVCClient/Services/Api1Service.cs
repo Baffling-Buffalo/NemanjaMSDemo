@@ -37,44 +37,26 @@ namespace MVCClient.Services
             return data;
         }
 
-        public async Task<string> GetUserData()
+        public async Task UpdateData(Api1Object model)
         {
-            string uri = API.API1.GetUserData(_remoteServiceBaseUrl);
+            string uri = API.API1.UpdateData(_remoteServiceBaseUrl);
 
-            var responseString = await _httpClient.GetStringAsync(uri);
+            var api1DataContent = new StringContent(JsonConvert.SerializeObject(model), System.Text.Encoding.UTF8, "application/json");
 
-            return responseString;
+            var responseString = await _httpClient.PutAsync(uri, api1DataContent);
+
+            responseString.EnsureSuccessStatusCode();
         }
 
-        public async Task<string> GetAdminData()
-        {
-            string uri = API.API1.GetAdminData(_remoteServiceBaseUrl);
-
-            var responseString = await _httpClient.GetStringAsync(uri);
-
-            return responseString;
-        }
-
-        public async Task<string> GetApi1and2JoinedData()
-        {
-            string uri = API.API1.GetApi1and2JoinedData(_remoteServiceBaseUrl);
-
-            var responseString = await _httpClient.GetStringAsync(uri);
-
-            return responseString;
-        }
-
-        public async Task<string> CreateData(Api1Object data)
+        public async Task CreateData(Api1Object model)
         {
             string uri = API.API1.CreateData(_remoteServiceBaseUrl);
 
-            var api1DataContent = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
+            var api1DataContent = new StringContent(JsonConvert.SerializeObject(model), System.Text.Encoding.UTF8, "application/json");
 
             var responseString = await _httpClient.PostAsync(uri, api1DataContent);
 
             responseString.EnsureSuccessStatusCode();
-
-            return "Successfuly created";
         }
     }
 }

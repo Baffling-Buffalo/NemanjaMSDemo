@@ -31,12 +31,21 @@ namespace API2.IntegrationEvents.Handlers
             {
                 _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, Program.AppName, @event);
 
-                var itemToUpdate = api2Context.Api2Data.Find(@event.DataId);
-                itemToUpdate.Data = @event.Data;
+                try
+                {
+                    var itemToUpdate = api2Context.Api2Data.Find(@event.DataId);
+                    itemToUpdate.Data = @event.Data;
 
-                api2Context.Api2Data.Update(itemToUpdate);
+                    api2Context.Api2Data.Update(itemToUpdate);
 
-                await api2Context.SaveChangesAsync();
+                    await api2Context.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
 
             }
         }

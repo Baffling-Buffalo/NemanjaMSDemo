@@ -40,7 +40,7 @@ namespace API1.Services
                 PublishUpdatedDataIntegrationEvent(data);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }          

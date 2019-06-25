@@ -29,6 +29,11 @@ using Microsoft.Extensions.Logging;
 using Serilog.Context;
 using MVCClient.Infrastructure.Middlewares;
 using MVCClient.Attributes;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
+using System.Reflection;
+using MVCClient.Resources;
 
 namespace MVCClient
 {
@@ -73,6 +78,9 @@ namespace MVCClient
             app.UseMiddleware<UserSpecificSerilogLoggingMiddleware>();
 
             app.UseStaticFiles();
+
+            app.UseCustomLocalization(Configuration);
+
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
@@ -86,16 +94,56 @@ namespace MVCClient
 
     static class ServiceCollectionExtensions
     {
+        //public static IServiceCollection AddLocalization(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    services.AddLocalization(options =>
+        //    {
+        //        options.ResourcesPath = "Resources";
+        //    });
+        //}
+
         public static IServiceCollection AddCustomMvc(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddOptions();
             services.Configure<AppSettings>(configuration);
 
+            services.AddLocalization(options =>
+            {
+                options.ResourcesPath = "Resources";
+            });
+
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ModelValidationFilter));
             })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization(options =>
+            {
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                {
+                    var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
+                    return factory.Create("SharedResource", assemblyName.Name);
+                };
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("sr-Latn-RS")
+                };
+
+                var defaultCulture = configuration["defaultCulture"];
+                
+                options.DefaultRequestCulture = new RequestCulture(culture: defaultCulture, uiCulture: defaultCulture);
+                
+                options.SupportedCultures = supportedCultures;
+
+                options.SupportedUICultures = supportedCultures;
+                
+            });
 
             return services;
         }
@@ -130,10 +178,13 @@ namespace MVCClient
 
         public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); //custom
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); 
 
             var identityUrl = configuration.GetValue<string>("IdentityUrl");
             var callBackUrl = configuration.GetValue<string>("CallBackUrl");
+            var clientId = configuration.GetValue<string>("ClientId");
+            var clientSecret = configuration.GetValue<string>("ClientSecret");
+
 
             services
                 .AddAuthentication(options =>
@@ -155,12 +206,14 @@ namespace MVCClient
                     options.SignedOutRedirectUri = callBackUrl.ToString();
                     options.RequireHttpsMetadata = false; // PRODUCTION - should stay true
 
-                    options.ClientId = "mvc";
-                    options.ClientSecret = "secret";
+                    options.ClientId = clientId;
+                    options.ClientSecret = clientSecret;
                     options.ResponseType = "code id_token";
 
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
+
+                    options.ClientSecret = "secret";
 
                     options.Scope.Add("api1");
                     options.Scope.Add("api2");
@@ -182,6 +235,15 @@ namespace MVCClient
                 });
 
             return services;
+        }
+
+        public static IApplicationBuilder UseCustomLocalization(this IApplicationBuilder app, IConfiguration configuration)
+        {
+            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.2
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+
+            return app;
         }
 
         static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
